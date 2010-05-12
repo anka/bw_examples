@@ -1,0 +1,8 @@
+h1. Examples of Blackwhale Blog | Seaside
+
+This github repository contains source code examples of the corresponding blog "Seaside":http://blog.blackwhale.at.
+
+p. 
+
+# *CameraOverlay* - This example shows how to display a custom view within the iPhone camera view. You will see how to display the view containing an image and a button.
+

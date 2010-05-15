@@ -5,4 +5,5 @@ This github repository contains source code examples of the corresponding blog "
 p. 
 
 # *CameraOverlay* - This example shows how to display a custom view within the iPhone camera view. You will see how to display the view containing an image and a button.
+# *MasterDetail* - This is a simple iPad application example, which shows you how to create your own master-detail view using the UISplitViewController. The code also includes some modifications to choose whether to show the master view in full size or as a popup within portrait mode.
 

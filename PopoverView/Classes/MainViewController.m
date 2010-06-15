@@ -14,6 +14,17 @@
 
 //method which gets called when button at toolbar was activated
 - (void) toolbarAction:(id) sender {
+	
+	if([self.popoverController isPopoverVisible])
+	{
+		//close the popover view if toolbar button was touched
+		//again and popover is already visible
+		//Thanks to @chrisonhismac
+		
+		[self.popoverController dismissPopoverAnimated:YES];
+		return;
+	}
+	
 	//build our custom popover view
 	UIViewController* popoverContent = [[UIViewController alloc]
 										init];

@@ -1,0 +1,3 @@
+[submodule "FoursquareIntegration/lib/oauthconsumer"]
+	path = FoursquareIntegration/lib/oauthconsumer
+	url = git://github.com/jdg/oauthconsumer.git

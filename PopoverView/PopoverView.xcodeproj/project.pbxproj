@@ -18,6 +18,8 @@
 		A91F4E8C11A0B65900EB45AA /* blackwhale.png in Resources */ = {isa = PBXBuildFile; fileRef = A91F4E8B11A0B65900EB45AA /* blackwhale.png */; };
 		A91F4ECB11A0BDB300EB45AA /* ViewWithPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A91F4ECA11A0BDB300EB45AA /* ViewWithPicker.xib */; };
 		A91F4ECF11A0BE5B00EB45AA /* ViewWithPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A91F4ECE11A0BE5B00EB45AA /* ViewWithPickerController.m */; };
+		A955EEED1259EE9000A38EFA /* TablePopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = A955EEEC1259EE9000A38EFA /* TablePopover.xib */; };
+		A955EEF11259EEAD00A38EFA /* TablePopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = A955EEF01259EEAD00A38EFA /* TablePopoverController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,9 @@
 		A91F4ECA11A0BDB300EB45AA /* ViewWithPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewWithPicker.xib; sourceTree = "<group>"; };
 		A91F4ECD11A0BE5B00EB45AA /* ViewWithPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewWithPickerController.h; sourceTree = "<group>"; };
 		A91F4ECE11A0BE5B00EB45AA /* ViewWithPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewWithPickerController.m; sourceTree = "<group>"; };
+		A955EEEC1259EE9000A38EFA /* TablePopover.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TablePopover.xib; sourceTree = "<group>"; };
+		A955EEEF1259EEAD00A38EFA /* TablePopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablePopoverController.h; sourceTree = "<group>"; };
+		A955EEF01259EEAD00A38EFA /* TablePopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablePopoverController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,8 @@
 				28D7ACF70DDB3853001CB0EB /* MainViewController.m */,
 				A91F4ECD11A0BE5B00EB45AA /* ViewWithPickerController.h */,
 				A91F4ECE11A0BE5B00EB45AA /* ViewWithPickerController.m */,
+				A955EEEF1259EEAD00A38EFA /* TablePopoverController.h */,
+				A955EEF01259EEAD00A38EFA /* TablePopoverController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -104,6 +111,7 @@
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* PopoverView-Info.plist */,
 				A91F4ECA11A0BDB300EB45AA /* ViewWithPicker.xib */,
+				A955EEEC1259EE9000A38EFA /* TablePopover.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 				2899E5220DE3E06400AC0155 /* MainView.xib in Resources */,
 				A91F4E8C11A0B65900EB45AA /* blackwhale.png in Resources */,
 				A91F4ECB11A0BDB300EB45AA /* ViewWithPicker.xib in Resources */,
+				A955EEED1259EE9000A38EFA /* TablePopover.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +194,7 @@
 				1D3623260D0F684500981E51 /* PopoverViewAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MainViewController.m in Sources */,
 				A91F4ECF11A0BE5B00EB45AA /* ViewWithPickerController.m in Sources */,
+				A955EEF11259EEAD00A38EFA /* TablePopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

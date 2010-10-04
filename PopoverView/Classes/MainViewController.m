@@ -8,9 +8,15 @@
 
 #import "MainViewController.h"
 
+
 @implementation MainViewController
 
-@synthesize popoverController, popoverButton, viewWithPickerController, popoverButtonForPicker;
+@synthesize popoverController;
+@synthesize popoverButton;
+@synthesize viewWithPickerController;
+@synthesize popoverButtonForPicker;
+@synthesize tablePopoverController;
+@synthesize popoverButtonForTable;
 
 //method which gets called when button at toolbar was activated
 - (void) toolbarAction:(id) sender {
@@ -38,8 +44,8 @@
 	popoverContent.contentSizeForViewInPopover = CGSizeMake(300, 400);
 	
 	//create a popover controller
-	self.popoverController = [[UIPopoverController alloc]
-							  initWithContentViewController:popoverContent];
+	self.popoverController = [[[UIPopoverController alloc]
+							  initWithContentViewController:popoverContent] autorelease];
 	
 	//present the popover view non-modal with a
 	//refrence to the toolbar button which was pressed
@@ -82,8 +88,8 @@
 	popoverContent.contentSizeForViewInPopover = CGSizeMake(200, 300);
 	
 	//create a popover controller
-	self.popoverController = [[UIPopoverController alloc]
-							  initWithContentViewController:popoverContent];
+	self.popoverController = [[[UIPopoverController alloc]
+							  initWithContentViewController:popoverContent] autorelease];
 	
 	//present the popover view non-modal with a
 	//refrence to the button pressed within the current view
@@ -100,9 +106,9 @@
 
 - (void) showPickerPopupAction:(id) sender {
 	//create the view controller from nib
-	self.viewWithPickerController = [[ViewWithPickerController alloc] 
+	self.viewWithPickerController = [[[ViewWithPickerController alloc] 
 										initWithNibName:@"ViewWithPicker" 
-										bundle:[NSBundle mainBundle]];
+										bundle:[NSBundle mainBundle]] autorelease];
 	
 
 	//set popover content size
@@ -114,13 +120,36 @@
 
 	
 	//create a popover controller
-	self.popoverController = [[UIPopoverController alloc]
-							  initWithContentViewController:viewWithPickerController];
+	self.popoverController = [[[UIPopoverController alloc]
+							  initWithContentViewController:viewWithPickerController] autorelease];
 	
 
 	//present the popover view non-modal with a
 	//refrence to the button pressed within the current view
 	[self.popoverController presentPopoverFromRect:popoverButtonForPicker.frame
+											inView:self.view
+						  permittedArrowDirections:UIPopoverArrowDirectionAny
+										  animated:YES];
+}
+
+- (void) showTablePopupAction:(id) sender
+{
+	//create the view controller from nib
+	self.tablePopoverController = [[[TablePopoverController alloc] 
+									  initWithNibName:@"TablePopover" 
+									  bundle:[NSBundle mainBundle]] autorelease];
+	
+	//set popover content size
+	tablePopoverController.contentSizeForViewInPopover = CGSizeMake(320, 300);
+	
+	//create a popover controller
+	self.popoverController = [[[UIPopoverController alloc]
+							  initWithContentViewController:tablePopoverController] autorelease];
+	
+	
+	//present the popover view non-modal with a
+	//refrence to the button pressed within the current view
+	[self.popoverController presentPopoverFromRect:popoverButtonForTable.frame
 											inView:self.view
 						  permittedArrowDirections:UIPopoverArrowDirectionAny
 										  animated:YES];
@@ -148,10 +177,12 @@
 
 
 - (void)dealloc {
-	self.popoverController = nil;
-	self.popoverButton = nil;
-	self.viewWithPickerController = nil;
-	self.popoverButtonForPicker = nil;
+	self.popoverController			= nil;
+	self.popoverButton				= nil;
+	self.viewWithPickerController	= nil;
+	self.popoverButtonForPicker		= nil;
+	self.tablePopoverController		= nil;
+	self.popoverButtonForTable		= nil;
 	
     [super dealloc];
 }

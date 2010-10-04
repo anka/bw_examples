@@ -108,6 +108,9 @@
 	//set popover content size
 	viewWithPickerController.contentSizeForViewInPopover = 
 			CGSizeMake(viewWithPickerController.view.frame.size.width, viewWithPickerController.view.frame.size.height);
+	
+	//set delegate 
+	viewWithPickerController.delegate = self;
 
 	
 	//create a popover controller
@@ -121,6 +124,20 @@
 											inView:self.view
 						  permittedArrowDirections:UIPopoverArrowDirectionAny
 										  animated:YES];
+}
+
+// Method gets called whenever the selection of an element
+// within the picker view in the popover view occurs.
+- (void) viewWithPickerController:(ViewWithPickerController*) viewWithPickerController didSelectValue:(NSString*) value
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Selection" 
+													message:[NSString stringWithFormat:@"You selected %@!", value]
+												   delegate:nil 
+										  cancelButtonTitle:@"Dismiss" 
+										  otherButtonTitles:nil];
+	
+	[alert show];
+	[alert release];
 }
 
 

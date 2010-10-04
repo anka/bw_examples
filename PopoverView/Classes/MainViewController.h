@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ViewWithPickerController.h"
 
-@interface MainViewController : UIViewController {
+@interface MainViewController : UIViewController <PopoverPickerDelegate> {
 
 	UIPopoverController *popoverController;
 

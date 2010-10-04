@@ -11,7 +11,7 @@
 
 @implementation ViewWithPickerController
 
-@synthesize pickerView, label;
+@synthesize pickerView, label, delegate;
 
 
 #pragma mark -
@@ -38,7 +38,12 @@
 
 //handle selection of a row
 - (void)pickerView:(UIPickerView *)picker didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	self.label.text = [pickerView.delegate pickerView:picker titleForRow:row forComponent:component];
+	NSString *value = [pickerView.delegate pickerView:picker titleForRow:row forComponent:component];
+	self.label.text = value;
+	
+	//notify the delegate about selecting a value
+	if(delegate != nil)
+		[delegate viewWithPickerController:self didSelectValue:value];
 }
 
 

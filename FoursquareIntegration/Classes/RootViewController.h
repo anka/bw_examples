@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface RootViewController : UITableViewController {
+	
+	NSArray *venues;
+	
 }
+
+@property(nonatomic,retain) NSArray *venues;
 
 @end

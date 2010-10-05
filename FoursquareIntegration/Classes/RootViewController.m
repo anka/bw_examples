@@ -7,51 +7,82 @@
 //
 
 #import "RootViewController.h"
-
+#import "Foursquare.h"
 
 @implementation RootViewController
 
+@synthesize venues;
+
+
+#pragma mark -
+#pragma mark Action methods
+
+- (void) foursquareLoginLogout:(id) sender
+{
+	if([[Foursquare sharedInstance] isActive])
+	{
+		[[Foursquare sharedInstance] logout];
+		[(UIBarButtonItem*)sender setTitle:@"Connect"];
+	}
+	else
+	{
+		[[Foursquare sharedInstance] setRootController:self];
+		[[Foursquare sharedInstance] login];
+		[(UIBarButtonItem*)sender setTitle:@"Disconnect"];
+	}
+}
+
+- (void) reloadVenues:(id) sender
+{
+	if([[Foursquare sharedInstance] isActive] == NO)
+	{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Foursquare" 
+														message:@"Connect your foursquare account first." 
+													   delegate:nil 
+											  cancelButtonTitle:@"OK" 
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
+	else
+	{
+		//Search venues nearby the wall street (limit to 30 venues)
+		//Customize this on your own.
+		self.venues = [[Foursquare sharedInstance] findLocationsNearbyLatitude:40.705651 
+																	 longitude:-74.008117 
+																		 limit:30 
+																	searchterm:nil];
+		[self.tableView reloadData];
+	}
+}
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	//Set title
+	self.title = @"foursquare";
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-*/
+	//Add a foursquare connect/disconnect button
+	NSString *title = [[Foursquare sharedInstance] isActive] ? @"Disconnect" : @"Connect";
+	UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:title 
+																	  style:UIBarButtonItemStyleDone 
+																	 target:self 
+																	 action:@selector(foursquareLoginLogout:)];
+	self.navigationItem.leftBarButtonItem = connectButton;
+	[connectButton release];
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
 
-/*
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	//Add a reload button
+	UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" 
+																	  style:UIBarButtonItemStyleDone 
+																	 target:self 
+																	 action:@selector(reloadVenues:)];
+	self.navigationItem.rightBarButtonItem = reloadButton;
+	[reloadButton release];
 }
- */
 
 
 #pragma mark -
@@ -65,7 +96,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return venues ? [venues count] : 1; 
 }
 
 
@@ -76,87 +107,75 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+	
+	if(venues && [venues count] > 0)
+	{
+		//Get dictionary with venue information
+		NSDictionary *venue = (NSDictionary*)[venues objectAtIndex:indexPath.row];
+		
+		NSString *name		= [venue objectForKey:@"name"];
+		NSNumber *distance	= [venue objectForKey:@"distance"];
+		
+		cell.textLabel.text = name;
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ meters", distance];
+	}
+	else
+	{
+		cell.textLabel.text = @"";
+		cell.detailTextLabel.text = @"Connect to foursquare and reload";
+	}
     
-	// Configure the cell.
 
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	//Deselect cell
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	
+	//Check if venues present
+	if(venues == nil || [venues count] < 1)
+		return;
+
+	if([[Foursquare sharedInstance] isActive] == NO)
+		return;
+	
+	//Get dictionary with venue information
+	NSDictionary *venue = (NSDictionary*)[venues objectAtIndex:indexPath.row];
+
+	NSNumber *venueId	= [venue objectForKey:@"id"];
+	NSNumber *geolat	= [venue objectForKey:@"geolat"];
+	NSNumber *geolong	= [venue objectForKey:@"geolong"];
+
+	//Checkin to venue and get message
+	NSString *message = [[Foursquare sharedInstance] checkinAtVenue:[venueId stringValue] 
+														   latitude:[geolat doubleValue] 
+														  longitude:[geolong doubleValue]];
+	
+	//Show message from foursquare
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Checkin" 
+													message:message 
+												   delegate:nil 
+										  cancelButtonTitle:@"Thanks!" 
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 
 #pragma mark -
 #pragma mark Memory management
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-}
-
 
 - (void)dealloc {
+	self.venues = nil;
+	
     [super dealloc];
 }
 

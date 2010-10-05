@@ -19,9 +19,19 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+//register default values because "default values" of settings
+//don't work if app was installed first time
+- (void) registerDefaults
+{
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"];
+	NSDictionary *defaultsDict = [NSDictionary dictionaryWithContentsOfFile:filePath];
+	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultsDict];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    // Override point for customization after application launch.
+
+	//register some default values
+    [self registerDefaults];
     
     // Add the navigation controller's view to the window and display.
     [window addSubview:navigationController.view];

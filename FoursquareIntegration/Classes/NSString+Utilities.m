@@ -1,6 +1,6 @@
 //
 //  NSString+Utilities.m
-//  arstreets
+//  FoursquareIntegration
 //
 //  Created by Christian Inzinger on 5/9/10.
 //  Copyright 2010 Blackwhale GmbH. All rights reserved.
@@ -39,6 +39,9 @@
 	return [regExPredicate evaluateWithObject:self];
 }
 
+/*
+ URL encode the string
+ */
 - (NSString *)encodeString
 {
     NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, 

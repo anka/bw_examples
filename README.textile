@@ -9,4 +9,5 @@ p.
 # *PopoverView* - How to create a custom popover view and how to add content programmatically or by the use of Interface Builder will be shown in this very basic example. Also positioning of the popover view is content of this example.
 # *MultipleAccelerometer* - This project includes a very basic implementation to enable multiple delegates to receive acceleration events from the device. 
 # *InfinitePaging* - A small view component which simulates a infinite paging view. The class InfinitePagingView is very simple to use and provides a data source delegate and a view buffer for caching pages.
+# *FoursquareIntegration* - Example project to show how to integrate foursquare to your iPhone app. This project includes classes and views for a successful oAuth authentication and shows the basic workflwo to get loctions from foursquare an do a checkin for a user on a given venue. 
 

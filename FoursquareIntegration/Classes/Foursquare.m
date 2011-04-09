@@ -74,11 +74,6 @@ static Foursquare* sharedInstance_;
 #pragma mark Foursquare connection methods
 
 
-- (void) test
-{
-	[self requestXAuthAccessTokenForUsername:@"andreas.katzian@gmail.com" password:@"beta_foursquare83"];
-}
-
 - (void)setConsumerKey:(NSString *)key secret:(NSString *)secret
 {
 	self.consumerKey	= key;
@@ -108,6 +103,7 @@ static Foursquare* sharedInstance_;
 							[OARequestParameter requestParameter:@"x_auth_username" value:username],
 							[OARequestParameter requestParameter:@"x_auth_password" value:password],
 							nil]];	
+	
 	
 	// alway prepare the OA request
 	[request prepare];

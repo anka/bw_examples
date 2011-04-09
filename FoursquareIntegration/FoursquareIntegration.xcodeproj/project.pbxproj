@@ -15,7 +15,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
-		A955F008125BA79500A38EFA /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A955F007125BA79500A38EFA /* defaults.plist */; };
+		A955F008125BA79500A38EFA /* defaults-xx.plist in Resources */ = {isa = PBXBuildFile; fileRef = A955F007125BA79500A38EFA /* defaults-xx.plist */; };
 		A955F06C125BAA9600A38EFA /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A955F030125BAA9600A38EFA /* NSMutableURLRequest+Parameters.m */; };
 		A955F06D125BAA9600A38EFA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A955F032125BAA9600A38EFA /* NSString+URLEncoding.m */; };
 		A955F06E125BAA9600A38EFA /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = A955F034125BAA9600A38EFA /* NSURL+Base.m */; };
@@ -68,7 +68,7 @@
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* FoursquareIntegration-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FoursquareIntegration-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A955F007125BA79500A38EFA /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		A955F007125BA79500A38EFA /* defaults-xx.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "defaults-xx.plist"; sourceTree = "<group>"; };
 		A955F02F125BAA9600A38EFA /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
 		A955F030125BAA9600A38EFA /* NSMutableURLRequest+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Parameters.m"; sourceTree = "<group>"; };
 		A955F031125BAA9600A38EFA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				A955F085125BAAE000A38EFA /* FoursquareConnectView.xib */,
 				8D1107310486CEB800E47090 /* FoursquareIntegration-Info.plist */,
-				A955F007125BA79500A38EFA /* defaults.plist */,
+				A955F007125BA79500A38EFA /* defaults-xx.plist */,
 				A955F0DF125BC3BC00A38EFA /* defaults-example.plist */,
 			);
 			name = Resources;
@@ -376,7 +376,7 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
-				A955F008125BA79500A38EFA /* defaults.plist in Resources */,
+				A955F008125BA79500A38EFA /* defaults-xx.plist in Resources */,
 				A955F07B125BAA9600A38EFA /* OATestServer.rb in Resources */,
 				A955F07E125BAA9600A38EFA /* README in Resources */,
 				A955F086125BAAE000A38EFA /* FoursquareConnectView.xib in Resources */,
@@ -443,6 +443,7 @@
 				GCC_PREFIX_HEADER = FoursquareIntegration_Prefix.pch;
 				INFOPLIST_FILE = "FoursquareIntegration-Info.plist";
 				PRODUCT_NAME = FoursquareIntegration;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -455,6 +456,7 @@
 				GCC_PREFIX_HEADER = FoursquareIntegration_Prefix.pch;
 				INFOPLIST_FILE = "FoursquareIntegration-Info.plist";
 				PRODUCT_NAME = FoursquareIntegration;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -468,7 +470,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -482,7 +484,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

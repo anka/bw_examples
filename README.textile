@@ -1,6 +1,6 @@
-h1. Examples of Blackwhale Blog | Seaside
+h1. Examples of JadeMinds Blog
 
-This github repository contains source code examples of the corresponding blog "Seaside":http://blog.blackwhale.at.
+This github repository contains source code examples of the corresponding blog "JadeMind":http://www.jademind.com/blog.
 
 p. 
 
